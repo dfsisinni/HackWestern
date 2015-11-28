@@ -19,12 +19,10 @@ public class SearchMenu extends MainSearchMenu{
 	public SearchMenu () {
 		super.search.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				if (tf.getValue().equals("hello")){
-						System.out.println("thanks for clicking!!!");
-				}
-				else{
+				if (tf.getValue() != null){
 					GoogleClient();
 				}
+				
 			}
 			
 		});
