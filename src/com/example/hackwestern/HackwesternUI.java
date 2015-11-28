@@ -34,11 +34,6 @@ public class HackwesternUI extends UI {
 		currentUser = SecurityUtils.getSubject();
 		
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
-<<<<<<< HEAD
-		} 
-			setContent(new LoginFormDesign());
-=======
-
 			
 		} 
 		setContent(new LoginFormDesign());
@@ -52,7 +47,6 @@ public class HackwesternUI extends UI {
 	
 	public MainLayoutDesign getMainLayout () {
 		return this.main;
->>>>>>> 83e16015d579e9be137de51fee8eef20af57fc7f
 	}
 
 }
