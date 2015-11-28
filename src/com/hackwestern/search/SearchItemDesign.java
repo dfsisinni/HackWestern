@@ -15,8 +15,12 @@ import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Resource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
 import se.walkercrou.places.Place;
@@ -63,11 +67,19 @@ public class SearchItemDesign extends SearchItem {
 		pictureButton.setStyleName(ValoTheme.BUTTON_LINK); 
 		pictureButton.setIcon(new ExternalResource("http://s30.postimg.org/llhyw1pyl/12309206_10203989762744010_1568647486_n.jpg?noCache=1448696269"));
 		pictureButton.addClickListener(new ClickListener () {
-
 			@Override
 			public void buttonClick(ClickEvent event) {
-				Notification.show("Hi");
+				final Window window = new Window("Window");
+				window.setWidth(400.0f,Unit.PIXELS);
+				final FormLayout content = new FormLayout();
+				window.setContent(new Display());
+				window.setPosition(500, 200);
+				window.setHeight("400px");
+				window.setResizable(false);
+				window.setDraggable(false);
+				UI.getCurrent().addWindow(window);
 				
+		
 			}
 			
 		});
