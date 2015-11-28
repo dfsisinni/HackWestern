@@ -4,6 +4,7 @@ package com.hackwestern.search;
 
 
 import java.io.BufferedReader;
+import com.example.hackwestern.HackwesternUI;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -78,7 +79,7 @@ public class SearchItemDesign extends SearchItem {
 				window.setResizable(false);
 				window.setDraggable(false);
 				UI.getCurrent().addWindow(window);
-				
+				((HackwesternUI) UI.getCurrent()).setWindow(window);;
 		
 			}
 			

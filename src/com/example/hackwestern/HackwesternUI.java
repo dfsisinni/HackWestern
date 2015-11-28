@@ -13,6 +13,7 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.Window;
 
 import se.walkercrou.places.Place;
 
@@ -22,6 +23,7 @@ public class HackwesternUI extends UI {
 	
 	private Subject currentUser;
 	private MainLayoutDesign main;
+	private Window window;
 
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = HackwesternUI.class)
@@ -49,6 +51,14 @@ public class HackwesternUI extends UI {
 	
 	public MainLayoutDesign getMainLayout () {
 		return this.main;
+	}
+	
+	public Window getWindow () {
+		return this.window;
+	}
+	
+	public void setWindow (Window window) {
+		this.window = window;
 	}
 
 }
