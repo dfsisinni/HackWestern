@@ -25,26 +25,11 @@ public class HackwesternUI extends UI {
 
 	@Override
 	protected void init(VaadinRequest request) {
-<<<<<<< HEAD
-=======
-
->>>>>>> 69a4d88cbba2fbed652299362273f7ae9ddf2ee4
 		currentUser = SecurityUtils.getSubject();
 		
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
-			
-<<<<<<< HEAD
 		} 
 			setContent(new LoginFormDesign());
-		
-			
-=======
-		}
-			setContent(new LoginFormDesign());
-		
-			
-
->>>>>>> 69a4d88cbba2fbed652299362273f7ae9ddf2ee4
 	}
 
 }
