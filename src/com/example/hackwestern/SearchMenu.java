@@ -39,6 +39,10 @@ public class SearchMenu extends MainSearchMenu{
 			
 		});
 		super.menu.setNullSelectionAllowed(false);
+		super.menu.addItem("Google");
+		super.menu.addItem("Amazon");
+
+		super.menu.select("Google");
 	}
 	
 	public void GoogleClient(){
