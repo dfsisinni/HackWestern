@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src&quot;,&quot;THEME&quot;:&quot;hackwestern&quot;}">
+ </head> 
+ <body> 
+  <vaadin-vertical-layout size-full="true"> 
+   <vaadin-vertical-split-panel locked="true" split-position="200px"> 
+    <vaadin-vertical-layout size-full="true"> 
+     <vaadin-label style-name="title-style" size-auto="true" plain-text="" :middle="" :center="">
+       My Lists 
+     </vaadin-label> 
+     <vaadin-horizontal-layout width-full="true"> 
+      <vaadin-absolute-layout width="172px" height="100px" :middle="" :right=""> 
+       <vaadin-label style-name="mode-font" plain-text="" :top="34px" :right="21px" :left="1px">
+         View Mode: 
+       </vaadin-label> 
+      </vaadin-absolute-layout> 
+      <vaadin-combo-box item-caption-mode="id" width="216px" :middle=""> 
+       <option>Tag Based</option> 
+       <option>Single List</option> 
+      </vaadin-combo-box> 
+     </vaadin-horizontal-layout> 
+    </vaadin-vertical-layout> 
+    <vaadin-vertical-layout size-full="true"></vaadin-vertical-layout> 
+   </vaadin-vertical-split-panel> 
+  </vaadin-vertical-layout>  
+ </body>
+</html>
