@@ -5,16 +5,15 @@
  </head> 
  <body> 
   <vaadin-vertical-layout size-full="true"> 
-   <vaadin-absolute-layout width="408px" height="327px" :middle="" :center=""> 
-    <vaadin-form-layout icon="fonticon://FontAwesome/f007" style-name="border" id="userInputForm" width-auto="true" height="234px" _id="userInputForm" :top="31px" :left="20px"> 
+   <vaadin-absolute-layout width="408px" height="336px" :middle="" :center=""> 
+    <vaadin-form-layout icon="fonticon://FontAwesome/f007" style-name="border" id="userInputForm" size-auto="true" _id="userInputForm" :top="31px" :left="20px"> 
      <vaadin-text-field caption="Username:" id="username" _id="username"></vaadin-text-field> 
      <vaadin-password-field caption="Password:" id="password" _id="password"></vaadin-password-field> 
-     <vaadin-check-box caption="Remember Me" id="checkbox" _id="checkbox"></vaadin-check-box> 
-     <vaadin-button id="login" plain-text="" _id="login">
+     <vaadin-button style-name="login-button" id="login" plain-text="" _id="login">
        Login 
      </vaadin-button> 
     </vaadin-form-layout> 
-    <vaadin-button id="forgot" plain-text="" _id="forgot" :top="288px" :left="109px">
+    <vaadin-button id="forgot" plain-text="" _id="forgot" :top="285px" :left="109px">
       Forgot My Password 
     </vaadin-button> 
    </vaadin-absolute-layout> 
