@@ -1552,6 +1552,15 @@ div.v-layout.v-horizontal.v-widget {
 	margin-top: 20px;
 }
 
+.item-name {
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.item-font {
+	font-weight: bold;
+}
+
 .hackwestern.v-app, .hackwestern.v-app-loading {
 	font: 300 16px/1.55 "Open Sans", sans-serif;
 	color: #464646;

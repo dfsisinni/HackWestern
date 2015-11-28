@@ -25,19 +25,7 @@ public class HackwesternUI extends UI {
 
 	@Override
 	protected void init(VaadinRequest request) {
-<<<<<<< HEAD
-		final VerticalLayout layout = new VerticalLayout();
-		layout.setMargin(true);
-		setContent(new SearchMenu());
 
-		Button button = new Button("Clickretert Me");
-		button.addClickListener(new Button.ClickListener() {
-			public void buttonClick(ClickEvent event) {
-				layout.addComponent(new Label("Thank you for clicking"));
-			}
-		});
-		layout.addComponent(button);
-=======
 		currentUser = SecurityUtils.getSubject();
 		
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
@@ -46,7 +34,6 @@ public class HackwesternUI extends UI {
 			//setContent(new SearchItemDesign());
 		}
 
->>>>>>> 55a6be97ea26dae681fea52cfc95e7973e966b01
 	}
 
 }
