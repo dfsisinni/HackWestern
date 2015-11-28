@@ -6,6 +6,8 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 
+import com.vaadin.event.ShortcutAction.KeyCode;
+import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Notification;
@@ -21,10 +23,11 @@ public class LoginFormDesign extends LoginForm {
 	}
 	
 	public void initialUI() {
-		
+		logo.setSource(new ExternalResource("http://i.picresize.com/images/2015/11/28/N4a0.jpg"));
 	}
 	
 	public void clickListeners () {
+		login.setClickShortcut(KeyCode.ENTER);
 		login.addClickListener(new ClickListener () {
 
 			@Override

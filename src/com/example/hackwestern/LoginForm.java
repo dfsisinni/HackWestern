@@ -5,6 +5,7 @@ import com.vaadin.annotations.DesignRoot;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
@@ -28,6 +29,7 @@ public class LoginForm extends VerticalLayout {
 	protected CheckBox checkbox;
 	protected Button login;
 	protected Button forgot;
+	protected Image logo;
 
 	public LoginForm() {
 		Design.read(this);
