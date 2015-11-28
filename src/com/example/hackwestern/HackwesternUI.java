@@ -25,7 +25,7 @@ public class HackwesternUI extends UI {
 	protected void init(VaadinRequest request) {
 		final VerticalLayout layout = new VerticalLayout();
 		layout.setMargin(true);
-		setContent(layout);
+		setContent(new LoginForm());
 
 		Button button = new Button("Clickretert Me");
 		button.addClickListener(new Button.ClickListener() {
