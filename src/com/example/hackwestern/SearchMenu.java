@@ -47,7 +47,7 @@ public class SearchMenu extends MainSearchMenu{
 	}
 	
 	public void GoogleClient(){
-		GooglePlaces client = new GooglePlaces("AIzaSyCmD_vHmFOqI-FLMGP4t4YWjM7J2HB1K68");
+		GooglePlaces client = new GooglePlaces("AIzaSyBRHb43vXwe2BqzWTIbBvMF7d5rKVA7Z1w");
 		//List<Place> places = client.getPlacesByQuery(tf.getValue());  s
 		List<Place> places = client.getPlacesByQuery(tf.getValue(), Param.name("latitude").value(String.valueOf(latitude)),Param.name("longitude").value(String.valueOf(longitude)),Param.name("radius").value(String.valueOf(radius)));
 		/*for (int i = 0; i < places.size(); i++) {

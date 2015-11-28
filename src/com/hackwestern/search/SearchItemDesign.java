@@ -53,8 +53,10 @@ public class SearchItemDesign extends SearchItem {
             JSONObject json = new JSONObject(builder.toString());
             String imageUrl = json.getJSONObject("responseData").getJSONArray("results").getJSONObject(0).getString("url");
 
+         
+        	   this.image.setSource(new ExternalResource(imageUrl));
+           
             
-            this.image.setSource(new ExternalResource(imageUrl));
             
         } catch(Exception e){
             
