@@ -37,10 +37,14 @@ public class HackwesternUI extends UI {
 		
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
 		} 
+<<<<<<< HEAD
 			setContent(new LoginFormDesign());
 
 			
 		
+=======
+		setContent(main);
+>>>>>>> 40dad2c488bf22203c5985ade5f2b73710d87711
 		
 
 	}

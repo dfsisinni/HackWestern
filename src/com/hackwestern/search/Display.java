@@ -15,6 +15,10 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
+<<<<<<< HEAD
+=======
+import com.vaadin.ui.themes.ValoTheme;
+>>>>>>> 40dad2c488bf22203c5985ade5f2b73710d87711
 import com.vaadin.ui.Table.Align;
 
 public class Display extends DisplayTags{
@@ -25,7 +29,12 @@ public class Display extends DisplayTags{
 		tagTable.setColumnAlignment("Tags", Align.CENTER);
 		HashMap map = new HashMap();
 		
+<<<<<<< HEAD
 		
+=======
+		cancel.addStyleName(ValoTheme.BUTTON_DANGER);
+		save.addStyleName(ValoTheme.BUTTON_FRIENDLY);
+>>>>>>> 40dad2c488bf22203c5985ade5f2b73710d87711
 		
 		super.addTag.addClickListener(new ClickListener () {
 			@Override
