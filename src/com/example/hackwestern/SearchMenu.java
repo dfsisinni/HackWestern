@@ -2,8 +2,10 @@ package com.example.hackwestern;
 import java.util.List;
 
 import com.google.gwt.dev.shell.remoteui.MessageTransport.RequestException;
+import com.hackwestern.search.SearchResults;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickEvent;
 
 import se.walkercrou.places.GooglePlaces;
@@ -32,9 +34,10 @@ public class SearchMenu extends MainSearchMenu{
 		GooglePlaces client = new GooglePlaces("AIzaSyCmD_vHmFOqI-FLMGP4t4YWjM7J2HB1K68");
 		//List<Place> places = client.getPlacesByQuery(tf.getValue());  s
 		List<Place> places = client.getPlacesByQuery(tf.getValue(), Param.name("latitude").value(String.valueOf(latitude)),Param.name("longitude").value(String.valueOf(longitude)),Param.name("radius").value(String.valueOf(radius)));
-		for (int i = 0; i < places.size(); i++) {
+		/*for (int i = 0; i < places.size(); i++) {
 			printPlace(places.get(i));
-		}
+		}*/
+		UI.getCurrent().setContent(new SearchResults(places));
 	}
 	
 	public void printPlace (Place detailedtest) {
