@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
+import com.hackwestern.search.SearchItemDesign;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -29,7 +30,7 @@ public class HackwesternUI extends UI {
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
 			
 		} else {
-			setContent(new LoginFormDesign());
+			//setContent(new SearchItemDesign());
 		}
 
 	}

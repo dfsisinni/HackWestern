@@ -20,7 +20,7 @@ public class LoginFormDesign extends LoginForm {
 	}
 	
 	public void initialUI() {
-		login.addStyleName(ValoTheme.BUTTON_PRIMARY);
+		
 	}
 	
 	public void clickListeners () {
