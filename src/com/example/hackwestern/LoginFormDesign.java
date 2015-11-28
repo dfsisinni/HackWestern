@@ -9,6 +9,7 @@ import org.apache.shiro.subject.Subject;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.Notification.Type;
 
 public class LoginFormDesign extends LoginForm {
@@ -40,7 +41,7 @@ public class LoginFormDesign extends LoginForm {
 					try {
 						currentUser.login(token); //tries to authenticate user
 						clear();
-						Notification.show("AUTHENTICATED!");
+						UI.getCurrent().setContent(new SearchMenu());
 					} catch (Exception ex) { //if authentication is unsuccessful
 						clear();
 						Notification.show("Login Error:", "Invalid username/password combination.", Type.ERROR_MESSAGE);
