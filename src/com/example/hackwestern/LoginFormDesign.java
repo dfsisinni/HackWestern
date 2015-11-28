@@ -44,10 +44,11 @@ public class LoginFormDesign extends LoginForm {
 					try {
 						currentUser.login(token); //tries to authenticate user
 						clear();
-						UI.getCurrent().setContent(new SearchMenu());
+						UI.getCurrent().setContent(new MainLayoutDesign());
 					} catch (Exception ex) { //if authentication is unsuccessful
 						clear();
 						Notification.show("Login Error:", "Invalid username/password combination.", Type.ERROR_MESSAGE);
+						ex.printStackTrace();
 					}
 				}
 			}
