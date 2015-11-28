@@ -4,16 +4,16 @@
   <meta charset="UTF-8" name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src&quot;,&quot;THEME&quot;:&quot;hackwestern&quot;}">
  </head> 
  <body> 
-  <vaadin-vertical-layout size-full="true"> 
-   <vaadin-absolute-layout width="500px" height="200px" :middle="" :center=""> 
-    <vaadin-form-layout height="123px" :top="32px" :right="131px" :left="122px"> 
-     <vaadin-text-field caption="" id="tf" responsive="true" height="37px" _id="tf"></vaadin-text-field> 
-     <vaadin-button id="search" plain-text="" _id="search">
-       Search 
-     </vaadin-button> 
-    </vaadin-form-layout> 
-    <vaadin-combo-box id="menu" item-caption-mode="id" width="144px" height="37px" _id="menu" :top="68px" :left="342px"> 
-    </vaadin-combo-box> 
+  <vaadin-vertical-layout id="vert" size-full="true" _id="vert"> 
+   <vaadin-label style-name="title-style" size-auto="true" plain-text="" :middle="" :center="">
+     Search Menu 
+   </vaadin-label> 
+   <vaadin-absolute-layout id="abs" width="601px" height="39px" _id="abs" :center=""> 
+    <vaadin-combo-box id="menu" item-caption-mode="id" width="177px" height="37px" _id="menu" :top="0px" :left="317px"></vaadin-combo-box> 
+    <vaadin-text-field id="tf" width="300px" _id="tf" :top="0px" :left="0px"></vaadin-text-field> 
+    <vaadin-button id="search" plain-text="" _id="search" :top="0px" :left="513px">
+      Search 
+    </vaadin-button> 
    </vaadin-absolute-layout> 
   </vaadin-vertical-layout>  
  </body>

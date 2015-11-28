@@ -7,6 +7,7 @@ import com.ECS.client.jax.Item;
 import com.ECS.client.jax.Items;
 import com.google.gwt.dev.shell.remoteui.MessageTransport.RequestException;
 import com.hackwestern.search.SearchResults;
+import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
@@ -24,13 +25,13 @@ public class SearchMenu extends MainSearchMenu{
 	
 	public SearchMenu () {
 		
+		super.search.setClickShortcut(KeyCode.ENTER);
 		super.search.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				if (tf.getValue() != null){
 					if(menu.getValue().equals("Google")){
 						GoogleClient();	
-					}
-					else{
+					} else {
 						AmazonClient();
 					}
 				}
@@ -52,7 +53,7 @@ public class SearchMenu extends MainSearchMenu{
 		/*for (int i = 0; i < places.size(); i++) {
 			printPlace(places.get(i));
 		}*/
-		UI.getCurrent().setContent(new SearchResults(places));
+		((HackwesternUI) UI.getCurrent()).SecondarySearch(places);
 	}
 	
 	public void printPlace (Place detailedtest) {
@@ -113,5 +114,6 @@ public class SearchMenu extends MainSearchMenu{
         System.out.println("API Test stopped");
 
     }
+	
 
 }

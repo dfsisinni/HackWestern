@@ -1,15 +1,27 @@
 package com.example.hackwestern;
 
+import java.util.List;
+
+import com.hackwestern.search.SearchResults;
 import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Table.ColumnHeaderMode;
+import com.vaadin.ui.VerticalSplitPanel;
 import com.vaadin.ui.themes.ValoTheme;
 
+import se.walkercrou.places.Place;
+
 public class MainLayoutDesign extends MainLayout {
+	
+	private SearchResults results;
+	private VerticalSplitPanel holder;
+	private SearchMenu searchMenu;
 
 	public MainLayoutDesign () {
 		initialUI();
 		clickListeners();
+		results = null;
 	}
 	
 	public void initialUI() {
@@ -26,11 +38,26 @@ public class MainLayoutDesign extends MainLayout {
 		table.setPageLength(table.getItemIds().size() + 1);
 		
 		split.setSecondComponent(new SearchMenu());
-		
+		split.setLocked(true);
 	
 	}
 	
 	public void clickListeners() {
+		
+	}
+	
+	public void receiveResults (List <Place> places) {
+		holder = new VerticalSplitPanel();
+		holder.setLocked(true);
+		results = new SearchResults(places);
+		searchMenu = new SearchMenu();
+		
+		split.setSecondComponent(holder);
+		holder.setSecondComponent(results);
+		holder.setFirstComponent(searchMenu);
+		
+		holder.setSplitPosition((float) 200.0, Unit.PIXELS);
+		
 		
 	}
 	

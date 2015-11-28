@@ -1,5 +1,7 @@
 package com.example.hackwestern;
 
+import java.util.List;
+
 import javax.servlet.annotation.WebServlet;
 
 import org.apache.shiro.SecurityUtils;
@@ -12,11 +14,14 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
 
+import se.walkercrou.places.Place;
+
 @SuppressWarnings("serial")
 @Theme("hackwestern")
 public class HackwesternUI extends UI {
 	
-	Subject currentUser;
+	private Subject currentUser;
+	private MainLayoutDesign main;
 
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = HackwesternUI.class)
@@ -25,20 +30,24 @@ public class HackwesternUI extends UI {
 
 	@Override
 	protected void init(VaadinRequest request) {
+		main = new MainLayoutDesign();
 		currentUser = SecurityUtils.getSubject();
 		
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
-<<<<<<< HEAD
-		} 
-			setContent(new LoginFormDesign());
-=======
+
 			
 		} 
 		setContent(new LoginFormDesign());
 		
 
-
->>>>>>> 64c573711a7713b16e111324309cf2c0278d8af5
+	}
+	
+	public void SecondarySearch (List <Place> places) {
+		main.receiveResults(places);
+	}
+	
+	public MainLayoutDesign getMainLayout () {
+		return this.main;
 	}
 
 }
