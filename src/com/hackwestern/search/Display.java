@@ -6,6 +6,8 @@ import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Notification.Type;
 import com.hackwestern.persistence.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,7 @@ import javax.persistence.Query;
 
 import org.apache.jasper.tagplugins.jstl.core.Set;
 
+import com.vaadin.addon.jpacontainer.JPAContainerFactory;
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
 import com.vaadin.event.ShortcutAction.KeyCode;
@@ -63,9 +66,11 @@ public class Display extends DisplayTags{
 				item.setLocationId(place.getPlaceId());
 				item.setUser(((HackwesternUI) UI.getCurrent()).getUser());
 				
-				em.getTransaction().begin();
-				em.persist(item);
-				em.getTransaction().commit();
+				Collection <Tags> collection = new ArrayList<Tags>();
+
+				
+				
+				
 				
 				
 				q = em.createQuery("SELECT x FROM Tags AS x");
@@ -78,15 +83,21 @@ public class Display extends DisplayTags{
 					tag.setTag(((Label) tagTable.getItem(i).getItemProperty("Tags").getValue()).getValue());
 					tag.setUser(((HackwesternUI) UI.getCurrent()).getUser());
 					
-					em.getTransaction().begin();
-					em.persist(tag);
-					em.getTransaction().commit();
+					collection.add(tag);
+					
 				}
+				item.setTagsCollection(collection);
+				
+				((HackwesternUI) UI.getCurrent()).items.addEntity(item);
+				/*em.getTransaction().begin();
+				em.persist(item);
+				em.getTransaction().commit();*/
 				
 				((HackwesternUI) UI.getCurrent()).getWindow().close();
 				((HackwesternUI) UI.getCurrent()).setWindow(null);
-				((HackwesternUI) UI.getCurrent()).getMainLayout().newMyLists();
 				((HackwesternUI) UI.getCurrent()).getMainLayout().getMyLists().receiveNewItem(item, tags);
+				
+				
 				
 				
 				Notification note = new Notification(place.getName() + " Saved", Type.TRAY_NOTIFICATION);
