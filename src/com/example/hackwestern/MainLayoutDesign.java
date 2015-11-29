@@ -95,4 +95,12 @@ public class MainLayoutDesign extends MainLayout {
 		
 	}
 	
+	public MyListsDesign getMyLists () {
+		return this.myLists;
+	}
+	
+	public void newMyLists () {
+		myLists = new MyListsDesign();
+	}
+	
 }

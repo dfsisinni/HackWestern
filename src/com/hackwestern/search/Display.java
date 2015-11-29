@@ -85,10 +85,15 @@ public class Display extends DisplayTags{
 				
 				((HackwesternUI) UI.getCurrent()).getWindow().close();
 				((HackwesternUI) UI.getCurrent()).setWindow(null);
+				((HackwesternUI) UI.getCurrent()).getMainLayout().newMyLists();
+				((HackwesternUI) UI.getCurrent()).getMainLayout().getMyLists().receiveNewItem(item, tags);
+				
 				
 				Notification note = new Notification(place.getName() + " Saved", Type.TRAY_NOTIFICATION);
 				note.setPosition(Position.BOTTOM_CENTER);
 				note.show(Page.getCurrent());
+				
+				
 			}
 			
 		});

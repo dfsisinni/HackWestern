@@ -55,7 +55,7 @@ public class LoginFormDesign extends LoginForm {
 						((HackwesternUI) UI.getCurrent()).setUser((Users) q.getResultList().get(0));
 						
 						clear();
-						
+						((HackwesternUI) UI.getCurrent()).makeMainDesign();
 						UI.getCurrent().setContent(((HackwesternUI) UI.getCurrent()).getMainLayout());
 					} catch (Exception ex) { //if authentication is unsuccessful
 						clear();

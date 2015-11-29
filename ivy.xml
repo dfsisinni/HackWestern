@@ -2,6 +2,7 @@
 <!DOCTYPE ivy-module [
 	<!ENTITY vaadin.version "7.5.8">
 	<!ENTITY shiro.version "1.2.4">
+	
 ]>
 <ivy-module version="2.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -52,6 +53,13 @@
         <dependency org="org.apache.shiro" name="shiro-guice" rev="&shiro.version;" />
         
         <dependency org="mysql" name="mysql-connector-java" rev="5.1.6"/>
+        <dependency org="commons-lang" name="commons-lang" rev="2.3"/>
+        
+        <dependency 
+   org="com.vaadin.addon" 
+   name="jpacontainer" 
+   rev="3.2.0" />
+        
 			
 	</dependencies>
 </ivy-module>

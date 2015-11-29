@@ -36,7 +36,7 @@ public class HackwesternUI extends UI {
 
 	@Override
 	protected void init(VaadinRequest request) {
-		main = new MainLayoutDesign();
+		
 		currentUser = SecurityUtils.getSubject();
 		
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
@@ -66,6 +66,10 @@ public class HackwesternUI extends UI {
 	
 	public Users getUser() {
 		return this.user;
+	}
+	
+	public void makeMainDesign () {
+		main = new MainLayoutDesign();
 	}
 
 }
