@@ -28,9 +28,12 @@ import se.walkercrou.places.Place;
 
 public class SearchItemDesign extends SearchItem {
 	
+	private Place place;
+	
 	public SearchItemDesign (Place place) {
 		initialUI();
 		place = place.getDetails();
+		this.place = place;
 		this.itemName.setValue(place.getName());
 		this.address.setValue(place.getAddress());
 		this.website.setValue(place.getWebsite());
@@ -55,7 +58,7 @@ public class SearchItemDesign extends SearchItem {
             String imageUrl = json.getJSONObject("responseData").getJSONArray("results").getJSONObject(0).getString("url");
 
          
-        	   this.image.setSource(new ExternalResource(imageUrl));
+        	this.image.setSource(new ExternalResource(imageUrl));
            
             
             
@@ -72,12 +75,13 @@ public class SearchItemDesign extends SearchItem {
 		pictureButton.addClickListener(new ClickListener () {
 			@Override
 			public void buttonClick(ClickEvent event) {
-				final Window window = new Window("Window");
+				final Window window = new Window("Add to My Lists");
 				window.setWidth(400.0f,Unit.PIXELS);
 				final FormLayout content = new FormLayout();
-				window.setContent(new Display());
-				window.setPosition(500, 200);
-				window.setHeight("400px");
+				window.setContent(new Display(place));
+				window.center();
+				window.setHeight("365px");
+				window.setWidth("400px");
 				window.setResizable(false);
 				window.setDraggable(false);
 				UI.getCurrent().addWindow(window);

@@ -50,6 +50,8 @@
         <dependency org="org.apache.shiro" name="shiro-web" rev="&shiro.version;" />
         <dependency org="org.apache.shiro" name="shiro-aspectj" rev="&shiro.version;" />
         <dependency org="org.apache.shiro" name="shiro-guice" rev="&shiro.version;" />
+        
+        <dependency org="mysql" name="mysql-connector-java" rev="5.1.6"/>
 			
 	</dependencies>
 </ivy-module>

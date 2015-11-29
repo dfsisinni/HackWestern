@@ -2,10 +2,15 @@ package com.example.hackwestern;
 
 import com.vaadin.ui.themes.ValoTheme;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 
+import com.hackwestern.persistence.Users;
 import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Button.ClickEvent;
@@ -43,7 +48,14 @@ public class LoginFormDesign extends LoginForm {
 					
 					try {
 						currentUser.login(token); //tries to authenticate user
+						
+						
+						EntityManager em = Persistence.createEntityManagerFactory("HackWestern").createEntityManager();
+						Query q = em.createQuery("SELECT x FROM Users AS x where x.userName = '" + username.getValue() + "'");
+						((HackwesternUI) UI.getCurrent()).setUser((Users) q.getResultList().get(0));
+						
 						clear();
+						
 						UI.getCurrent().setContent(((HackwesternUI) UI.getCurrent()).getMainLayout());
 					} catch (Exception ex) { //if authentication is unsuccessful
 						clear();

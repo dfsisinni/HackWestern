@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
+import com.hackwestern.persistence.Users;
 import com.hackwestern.search.SearchItemDesign;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -24,6 +25,7 @@ public class HackwesternUI extends UI {
 	private Subject currentUser;
 	private MainLayoutDesign main;
 	private Window window;
+	private Users user;
 
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = HackwesternUI.class)
@@ -37,14 +39,9 @@ public class HackwesternUI extends UI {
 		
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
 		} 
-<<<<<<< HEAD
+
 			setContent(new LoginFormDesign());
 
-			
-		
-=======
-		setContent(main);
->>>>>>> 40dad2c488bf22203c5985ade5f2b73710d87711
 		
 
 	}
@@ -63,6 +60,14 @@ public class HackwesternUI extends UI {
 	
 	public void setWindow (Window window) {
 		this.window = window;
+	}
+	
+	public void setUser (Users user) {
+		this.user = user;
+	}
+	
+	public Users getUser() {
+		return this.user;
 	}
 
 }
