@@ -16,13 +16,20 @@
          View Mode: 
        </vaadin-label> 
       </vaadin-absolute-layout> 
-      <vaadin-combo-box item-caption-mode="id" width="216px" :middle=""> 
+      <vaadin-combo-box id="dropmenu" item-caption-mode="id" width="216px" _id="dropmenu" :middle=""> 
        <option>Tag Based</option> 
        <option>Single List</option> 
       </vaadin-combo-box> 
      </vaadin-horizontal-layout> 
     </vaadin-vertical-layout> 
-    <vaadin-vertical-layout size-full="true"></vaadin-vertical-layout> 
+    <vaadin-vertical-layout height="272.03%"> 
+     <vaadin-horizontal-split-panel id="split" split-position="52.729885%" _id="split"> 
+      <vaadin-vertical-layout height="36.76%"> 
+       <vaadin-table id="slTable" width-full="true" height="118px" _id="slTable"></vaadin-table> 
+      </vaadin-vertical-layout> 
+      <vaadin-vertical-layout id="right" width="383px" height="116px" _id="right"></vaadin-vertical-layout> 
+     </vaadin-horizontal-split-panel> 
+    </vaadin-vertical-layout> 
    </vaadin-vertical-split-panel> 
   </vaadin-vertical-layout>  
  </body>

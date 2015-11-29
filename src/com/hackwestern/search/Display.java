@@ -17,6 +17,7 @@ import org.apache.jasper.tagplugins.jstl.core.Set;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
+import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.server.Page;
 import com.vaadin.shared.Position;
 import com.vaadin.ui.Alignment;
@@ -40,6 +41,9 @@ public class Display extends DisplayTags{
 		tagTable.addContainerProperty("Tags", Label.class, null);
 		tagTable.setColumnAlignment("Tags", Align.CENTER);
 		HashMap map = new HashMap();
+		
+		addTag.addStyleName(ValoTheme.BUTTON_PRIMARY);
+		addTag.setClickShortcut(KeyCode.ENTER);
 		
 		cancel.addStyleName(ValoTheme.BUTTON_DANGER);
 		save.addStyleName(ValoTheme.BUTTON_FRIENDLY);
@@ -98,6 +102,7 @@ public class Display extends DisplayTags{
 					Property p_field = (Property) item.getItemProperty("Tags");
 					p_field.setValue(new Label(textBox.getValue()));
 					map.put(textBox.getValue(),i);
+					textBox.clear();
 					i++;
 				} else 
 					Notification.show("Form Error:", "Tag already exists!", Type.WARNING_MESSAGE);
