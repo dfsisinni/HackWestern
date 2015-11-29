@@ -28,7 +28,7 @@ public class LoginFormDesign extends LoginForm {
 	}
 	
 	public void initialUI() {
-		logo.setSource(new ExternalResource("http://i.picresize.com/images/2015/11/28/N4a0.jpg"));
+		logo.setSource(new ExternalResource("http://i.imgur.com/A9AdNng.png"));
 	}
 	
 	public void clickListeners () {

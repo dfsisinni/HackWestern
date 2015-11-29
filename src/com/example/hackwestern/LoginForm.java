@@ -28,7 +28,6 @@ public class LoginForm extends VerticalLayout {
 	protected PasswordField password;
 	protected CheckBox checkbox;
 	protected Button login;
-	protected Button forgot;
 	protected Image logo;
 
 	public LoginForm() {

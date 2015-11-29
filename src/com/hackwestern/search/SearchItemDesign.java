@@ -76,7 +76,7 @@ public class SearchItemDesign extends SearchItem {
 	
 	public void initialUI() {
 		pictureButton.setStyleName(ValoTheme.BUTTON_LINK); 
-		pictureButton.setIcon(new ExternalResource("http://s30.postimg.org/llhyw1pyl/12309206_10203989762744010_1568647486_n.jpg?noCache=1448696269"));
+		pictureButton.setIcon(new ExternalResource("http://i.imgur.com/UFBwkDJ.png"));
 		pictureButton.addClickListener(new ClickListener () {
 			@Override
 			public void buttonClick(ClickEvent event) {
