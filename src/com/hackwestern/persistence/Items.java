@@ -20,7 +20,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-
 /**
  *
  * @author dane
@@ -33,7 +32,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Items.findById", query = "SELECT i FROM Items i WHERE i.id = :id"),
     @NamedQuery(name = "Items.findByName", query = "SELECT i FROM Items i WHERE i.name = :name"),
     @NamedQuery(name = "Items.findByType", query = "SELECT i FROM Items i WHERE i.type = :type"),
-    @NamedQuery(name = "Items.findByLocationId", query = "SELECT i FROM Items i WHERE i.locationId = :locationId")})
+    @NamedQuery(name = "Items.findByLocationId", query = "SELECT i FROM Items i WHERE i.locationId = :locationId"),
+    @NamedQuery(name = "Items.findByNotes", query = "SELECT i FROM Items i WHERE i.notes = :notes")})
 public class Items implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,6 +46,8 @@ public class Items implements Serializable {
     private String type;
     @Column(name = "location_id")
     private String locationId;
+    @Column(name = "notes")
+    private String notes;
     @JoinColumn(name = "user", referencedColumnName = "user_name")
     @ManyToOne
     private Users user;
@@ -89,6 +91,14 @@ public class Items implements Serializable {
 
     public void setLocationId(String locationId) {
         this.locationId = locationId;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public Users getUser() {

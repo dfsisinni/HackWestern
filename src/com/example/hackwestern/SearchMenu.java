@@ -47,19 +47,19 @@ public class SearchMenu extends MainSearchMenu{
 	}
 	
 	public void GoogleClient(){
-		GooglePlaces client = new GooglePlaces("AIzaSyBCfDOvcBugPVyIU4t4O_qXVvd3FiRiAaM");
+		GooglePlaces client = new GooglePlaces("AIzaSyA6m4Jhq1WD5OGl74jWH5Y8-FAY7s80XYI");
 		//List<Place> places = client.getPlacesByQuery(tf.getValue());  s
-		List<Place> places = client.getPlacesByQuery(tf.getValue(), Param.name("latitude").value(String.valueOf(latitude)),Param.name("longitude").value(String.valueOf(longitude)),Param.name("radius").value(String.valueOf(radius)));
-		/*for (int i = 0; i < places.size(); i++) {
+		List<Place> places = client.getNearbyPlaces(43.011657714844, -81.277519226074, 10000, Param.name("keyword").value(tf.getValue()));
+		for (int i = 0; i < places.size(); i++) {
 			printPlace(places.get(i));
 			
-		}*/
+		}
 	
 		((HackwesternUI) UI.getCurrent()).SecondarySearch(places);
 	}
 	
 	public void printPlace (Place detailedtest) {
-		detailedtest = detailedtest.getDetails();
+		//detailedtest = detailedtest.getDetails();
 	    System.out.println("Name: " + detailedtest.getName());
 	    System.out.println("Phone: " + detailedtest.getPhoneNumber());
 	    System.out.println("Address: " + detailedtest.getAddress());

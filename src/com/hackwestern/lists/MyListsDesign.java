@@ -1,9 +1,11 @@
 package com.hackwestern.lists;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -50,17 +52,23 @@ public class MyListsDesign extends MyListsSuperView{
 	
 	private JPAContainer <Items> items;
 	private JPAContainer <Tags> tags;
+	private multiFormControl control;
 	
 	private VerticalLayout separateTableHolder;
 	private Map <String, Table> map;
+	private Map <String, Table> tables;
 	
 	public MyListsDesign () {
 		items = JPAContainerFactory.make(Items.class, "HackWestern");
 		tags = JPAContainerFactory.make(Tags.class, "HackWestern");
 		map = new HashMap <String, Table> ();
 		
+		control = new multiFormControl(null, null);
+		
 		separateTableHolder = new VerticalLayout();
 		split.setFirstComponent(slTable);
+		split.setSecondComponent(control);
+		split.setSplitPosition(650, Unit.PIXELS, true);
 		
 		Filter userFilter = new Compare.Equal("user", ((HackwesternUI) UI.getCurrent()).getUser());
 		items.addContainerFilter(userFilter);
@@ -92,19 +100,9 @@ public class MyListsDesign extends MyListsSuperView{
 		dropmenu.addValueChangeListener(new ValueChangeListener () {
 			@Override
 			public void valueChange(ValueChangeEvent event) {
-<<<<<<< HEAD
-				if(dropmenu.getValue().equals("Single List")){
-					Object id = slTable.addItem();
-					Item item = slTable.getItem(id);
-					Property p_field = (Property) item.getItemProperty("Name");
-					p_field.setValue(new Label("test"));
-					final Button window = new Button("Window");
-					window.setWidth(400.0f,Unit.PIXELS);
-					right.addComponent(window);
-				}
-				}
-			});
-=======
+				
+				
+			
 				if (dropmenu.getValue().equals("Single List")){
 					split.setFirstComponent(slTable);
 				} else {
@@ -113,11 +111,22 @@ public class MyListsDesign extends MyListsSuperView{
 			}
 		});
 		
+		slTable.addValueChangeListener(new ValueChangeListener () {
+
+			@Override
+			public void valueChange(ValueChangeEvent event) {
+				control.receiveData((int) event.getProperty().getValue()); 
+			}
+			
+		});
 		
-		Map <String, Table> tables = new HashMap <String, Table> ();
+		
+		tables = new HashMap <String, Table> ();
 		
 		separateTableHolder.setWidth("100%");
 		separateTableHolder.setHeightUndefined();
+		
+		int count = 0;
 		
 		for (java.util.Iterator<Object> j = tags.getItemIds().iterator(); j.hasNext();) {
 			int iid = (Integer) j.next();
@@ -132,6 +141,8 @@ public class MyListsDesign extends MyListsSuperView{
 				temp.addStyleName("tag-title");
 				
 				Table table = new Table();
+				table.setId(String.valueOf(count));
+				count ++;
 				table.addContainerProperty("Name", Label.class, null);
 				table.addContainerProperty("Type", Label.class, null);
 				table.setColumnAlignment("Name", Align.CENTER);
@@ -145,18 +156,45 @@ public class MyListsDesign extends MyListsSuperView{
 					int jjd = (Integer) k.next();
 					Label label1 = new Label(((Items) tags.getItem(jjd).getItemProperty("itemId").getValue()).getName());
 					Label label2 = new Label(((Items) tags.getItem(jjd).getItemProperty("itemId").getValue()).getType());
-					table.addItem(new Object [] {label1, label2}, ((Items) tags.getItem(jjd).getItemProperty("itemId").getValue()).getLocationId());
+					table.addItem(new Object [] {label1, label2}, ((Items) tags.getItem(jjd).getItemProperty("itemId").getValue()).getId());
 				}
 				tables.put(String.valueOf(itm.getItemProperty("tag").getValue()), table);
 				table.setWidth("100%");
 				table.setPageLength(table.size());
+				
+				table.setSelectable(true);
+				
+				table.addValueChangeListener(new ValueChangeListener () {
+
+					@Override
+					public void valueChange(ValueChangeEvent event) {
+						List<Table> list = new ArrayList<Table>(tables.values());
+						int str = (int) event.getProperty().getValue();
+						for (int i = 0; i < list.size(); i++) {
+							try {
+							if (list.get(i).getValue() == null) {
+								
+							} else if (list.get(i).getValue() == null || !event.getProperty().getValue().equals(list.get(i).getValue())) {
+								list.get(i).select(null);
+							}
+							} catch (Exception ex) {
+								ex.printStackTrace();
+							}
+							
+						}
+						
+						control.receiveData((int) event.getProperty().getValue()); 
+						
+						
+					}
+					
+				});
 				
 				tags.removeContainerFilter(filter);
 				separateTableHolder.addComponent(new Label());
 			}
 			
 			//System.out.println("ID: " + "   TAG: " + item.getItemProperty("tag") + item.getItemProperty("itemId"));
->>>>>>> 6f84d2ef560e4a110608c2326a77f7a1a40ae25c
 		}
 		
 	}

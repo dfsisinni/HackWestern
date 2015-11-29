@@ -22,13 +22,13 @@ import com.vaadin.ui.declarative.Design;
 @SuppressWarnings("serial")
 public class multiForm extends VerticalLayout {
 	protected VerticalLayout vertBar;
+	protected TextArea notes;
+	protected Button save;
+	protected Button cancel;
 	protected Table tagTable;
 	protected TextField textField;
 	protected Button add;
 	protected Button delete;
-	protected TextArea notes;
-	protected Button save;
-	protected Button cancel;
 
 	public multiForm() {
 		Design.read(this);

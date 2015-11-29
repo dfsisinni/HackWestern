@@ -40,8 +40,9 @@ public class HackwesternUI extends UI {
 		currentUser = SecurityUtils.getSubject();
 		
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
+			
 		} 
-			setContent(new multiFormControl(null, null));
+			setContent(new LoginFormDesign());
 	}
 	
 	public void SecondarySearch (List <Place> places) {

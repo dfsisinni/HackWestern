@@ -4,6 +4,8 @@ package com.hackwestern.search;
 
 
 import java.io.BufferedReader;
+import java.io.File;
+
 import com.example.hackwestern.HackwesternUI;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -13,6 +15,7 @@ import org.json.JSONObject;
 
 import com.vaadin.client.ui.Icon;
 import com.vaadin.server.ExternalResource;
+import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
@@ -32,7 +35,9 @@ public class SearchItemDesign extends SearchItem {
 	
 	public SearchItemDesign (Place place) {
 		initialUI();
+		System.out.println("-");
 		place = place.getDetails();
+		System.out.println("yolo");
 		this.place = place;
 		this.itemName.setValue(place.getName());
 		this.address.setValue(place.getAddress());
@@ -50,9 +55,9 @@ public class SearchItemDesign extends SearchItem {
             String line;
             StringBuilder builder = new StringBuilder();
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            while((line = reader.readLine()) != null) {
-                builder.append(line);
-            }
+            
+            line = reader.readLine();
+            builder.append(line);
 
             JSONObject json = new JSONObject(builder.toString());
             String imageUrl = json.getJSONObject("responseData").getJSONArray("results").getJSONObject(0).getString("url");

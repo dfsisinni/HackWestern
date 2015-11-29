@@ -4,26 +4,29 @@
   <meta charset="UTF-8" name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src&quot;,&quot;THEME&quot;:&quot;hackwestern&quot;}">
  </head> 
  <body> 
-  <vaadin-vertical-layout size-full="true"> 
+  <vaadin-vertical-layout width-auto="true" height="628px"> 
    <vaadin-vertical-layout id="vertBar" width="648px" height="441px" _id="vertBar"> 
-    <vaadin-table id="tagTable" width="643px" height="198px" _id="tagTable"></vaadin-table> 
-    <vaadin-absolute-layout height="121.82%"> 
-     <vaadin-text-field id="textField" _id="textField" :top="0px" :left="96px"></vaadin-text-field> 
-     <vaadin-button id="add" plain-text="" _id="add" :top="0px" :left="313px">
-       add 
-     </vaadin-button> 
-     <vaadin-button id="delete" plain-text="" _id="delete" :top="0px" :left="411px">
-       delete 
-     </vaadin-button> 
-     <vaadin-text-area id="notes" width-full="true" _id="notes" :top="64px" :right="166px" :left="113px"></vaadin-text-area> 
-     <vaadin-label width="79px" height="24px" plain-text="" :top="40px" :left="281px">
+    <vaadin-absolute-layout width="650px" height="3246.36%"> 
+     <vaadin-text-area id="notes" width="650px" height="201px" _id="notes" :top="367px" :left="0px"></vaadin-text-area> 
+     <vaadin-label style-name="form-title" width="79px" height="24px" plain-text="" :top="331px" :left="299px">
        Notes 
      </vaadin-label> 
-     <vaadin-button id="save" plain-text="" _id="save" :top="183px" :left="190px">
-       save 
+     <vaadin-button id="save" plain-text="" _id="save" :top="579px" :left="188px">
+       Save 
      </vaadin-button> 
-     <vaadin-button id="cancel" plain-text="" _id="cancel" :top="183px" :left="313px">
-       cancel 
+     <vaadin-button id="cancel" plain-text="" _id="cancel" :top="579px" :left="378px">
+       Cancel 
+     </vaadin-button> 
+     <vaadin-table id="tagTable" width="648px" height="192px" _id="tagTable" :top="59px" :left="0px"></vaadin-table> 
+     <vaadin-label style-name="form-title" size-auto="true" plain-text="" :top="17px" :left="311px">
+       Tags 
+     </vaadin-label> 
+     <vaadin-text-field id="textField" _id="textField" :top="271px" :left="101px"></vaadin-text-field> 
+     <vaadin-button id="add" plain-text="" _id="add" :top="271px" :left="318px">
+       Add 
+     </vaadin-button> 
+     <vaadin-button id="delete" plain-text="" _id="delete" :top="271px" :left="462px">
+       Remove 
      </vaadin-button> 
     </vaadin-absolute-layout> 
    </vaadin-vertical-layout> 

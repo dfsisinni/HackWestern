@@ -1,5 +1,6 @@
 package com.hackwestern.lists;
 
+import com.hackwestern.persistence.Items;
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
@@ -17,11 +18,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import se.walkercrou.places.GooglePlaces;
+import se.walkercrou.places.Param;
 import se.walkercrou.places.Place;
 
 public class multiFormControl extends multiForm{
 	
 	int i;
+	private Items item;
+	EntityManager em = Persistence.createEntityManagerFactory("HackWestern").createEntityManager();
 	
 	public multiFormControl(Place place, Table table){
 	tagTable.addContainerProperty("Tags", Label.class, null);
@@ -29,6 +38,9 @@ public class multiFormControl extends multiForm{
 	tagTable.setSelectable(true);
 	i=tagTable.size() + 1;
 	HashMap map = new HashMap();
+	item = null;
+	
+	
 	
 	add.addClickListener(new Button.ClickListener() {
 		@Override
@@ -57,8 +69,13 @@ public class multiFormControl extends multiForm{
 		
 		@Override
 		public void buttonClick(ClickEvent event) {
-			// TODO Auto-generated method stub
-			System.out.println(notes.getValue());
+			if (item == null ) {
+				Notification.show("No item selected!");
+			} else {
+				em.getTransaction().begin();
+				item.setNotes(notes.getValue());
+				em.getTransaction().commit();
+			}
 		}
 	});
 	cancel.addClickListener(new Button.ClickListener() {
@@ -66,8 +83,27 @@ public class multiFormControl extends multiForm{
 		@Override
 		public void buttonClick(ClickEvent event) {
 			// TODO Auto-generated method stub
-			notes.clear();
+			if (item.getNotes() != null) {
+				notes.setValue(item.getNotes());
+			} else {
+				notes.setValue("");
+			}
 		}
 	});
+	
+	
 }
+	
+	public void receiveData (int id) {
+		
+		Query q = em.createQuery("SELECT x FROM Items AS x where x.id = '" + String.valueOf(id) + "'");
+		item = (Items) q.getResultList().get(0);
+		if (item.getNotes() != null) {
+			notes.setValue(item.getNotes());
+		} else {
+			notes.setValue("");
+		}
+		
+	}
+	
 }
