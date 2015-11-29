@@ -6,6 +6,7 @@ import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Link;
 import com.vaadin.ui.declarative.Design;
 
 /** 
@@ -24,7 +25,7 @@ public class SearchItem extends AbsoluteLayout {
 	protected Label itemName;
 	protected Label address;
 	protected Label phoneNumber;
-	protected Label website;
+	protected Link website;
 	protected Button pictureButton;
 
 	public SearchItem() {

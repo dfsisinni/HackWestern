@@ -41,7 +41,11 @@ public class SearchItemDesign extends SearchItem {
 		this.place = place;
 		this.itemName.setValue(place.getName());
 		this.address.setValue(place.getAddress());
-		this.website.setValue(place.getWebsite());
+		this.website.setCaption(place.getWebsite());
+		if (place.getWebsite() != null) {
+			this.website.setResource(new ExternalResource(place.getWebsite()));
+		}
+		
 		this.phoneNumber.setValue(place.getPhoneNumber());
 		
 		

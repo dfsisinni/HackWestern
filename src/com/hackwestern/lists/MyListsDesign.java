@@ -50,8 +50,7 @@ import com.vaadin.addon.jpacontainer.JPAContainerFactory;
 public class MyListsDesign extends MyListsSuperView{
 	private boolean initial;
 	
-	private JPAContainer <Items> items;
-	private JPAContainer <Tags> tags;
+
 	private multiFormControl control;
 	
 	private VerticalLayout separateTableHolder;
@@ -59,8 +58,6 @@ public class MyListsDesign extends MyListsSuperView{
 	private Map <String, Table> tables;
 	
 	public MyListsDesign () {
-		items = JPAContainerFactory.make(Items.class, "HackWestern");
-		tags = JPAContainerFactory.make(Tags.class, "HackWestern");
 		map = new HashMap <String, Table> ();
 		
 		control = new multiFormControl(null, null);
@@ -71,15 +68,15 @@ public class MyListsDesign extends MyListsSuperView{
 		split.setSplitPosition(650, Unit.PIXELS, true);
 		
 		Filter userFilter = new Compare.Equal("user", ((HackwesternUI) UI.getCurrent()).getUser());
-		items.addContainerFilter(userFilter);
+		((HackwesternUI) UI.getCurrent()).items.addContainerFilter(userFilter);
 		
-		for (java.util.Iterator<Object> j = tags.getItemIds().iterator(); j.hasNext();) {
+		for (java.util.Iterator<Object> j = ((HackwesternUI) UI.getCurrent()).tags.getItemIds().iterator(); j.hasNext();) {
 			int iid = (Integer) j.next();
-			Item item = tags.getItem(iid);
+			Item item = ((HackwesternUI) UI.getCurrent()).tags.getItem(iid);
 			System.out.println("ID: " + "   TAG: " + item.getItemProperty("tag") + item.getItemProperty("itemId"));
 		}
 		
-		slTable.setContainerDataSource(items);
+		slTable.setContainerDataSource(((HackwesternUI) UI.getCurrent()).items);
 		String [] visCols = {"name", "type"};
 		slTable.setVisibleColumns(visCols);
 		for (int i = 0; i < visCols.length; i++) {
@@ -128,9 +125,9 @@ public class MyListsDesign extends MyListsSuperView{
 		
 		int count = 0;
 		
-		for (java.util.Iterator<Object> j = tags.getItemIds().iterator(); j.hasNext();) {
+		for (java.util.Iterator<Object> j = ((HackwesternUI) UI.getCurrent()).tags.getItemIds().iterator(); j.hasNext();) {
 			int iid = (Integer) j.next();
-			Item itm = tags.getItem(iid);
+			Item itm = ((HackwesternUI) UI.getCurrent()).tags.getItem(iid);
 			
 			if (!tables.containsKey(itm.getItemProperty("tag").getValue())) {
 				Label temp = new Label(String.valueOf(itm.getItemProperty("tag").getValue()));
@@ -151,12 +148,12 @@ public class MyListsDesign extends MyListsSuperView{
 				table.setColumnExpandRatio("Type", (float) 0.5);
 				separateTableHolder.addComponent(table);
 				Filter filter = new Compare.Equal("tag", itm.getItemProperty("tag"));
-				tags.addContainerFilter(filter);
-				for (java.util.Iterator<Object> k = tags.getItemIds().iterator(); k.hasNext();) {
+				((HackwesternUI) UI.getCurrent()).tags.addContainerFilter(filter);
+				for (java.util.Iterator<Object> k = ((HackwesternUI) UI.getCurrent()).tags.getItemIds().iterator(); k.hasNext();) {
 					int jjd = (Integer) k.next();
-					Label label1 = new Label(((Items) tags.getItem(jjd).getItemProperty("itemId").getValue()).getName());
-					Label label2 = new Label(((Items) tags.getItem(jjd).getItemProperty("itemId").getValue()).getType());
-					table.addItem(new Object [] {label1, label2}, ((Items) tags.getItem(jjd).getItemProperty("itemId").getValue()).getId());
+					Label label1 = new Label(((Items) ((HackwesternUI) UI.getCurrent()).tags.getItem(jjd).getItemProperty("itemId").getValue()).getName());
+					Label label2 = new Label(((Items) ((HackwesternUI) UI.getCurrent()).tags.getItem(jjd).getItemProperty("itemId").getValue()).getType());
+					table.addItem(new Object [] {label1, label2}, ((Items) ((HackwesternUI) UI.getCurrent()).tags.getItem(jjd).getItemProperty("itemId").getValue()).getId());
 				}
 				tables.put(String.valueOf(itm.getItemProperty("tag").getValue()), table);
 				table.setWidth("100%");
@@ -169,6 +166,7 @@ public class MyListsDesign extends MyListsSuperView{
 					@Override
 					public void valueChange(ValueChangeEvent event) {
 						List<Table> list = new ArrayList<Table>(tables.values());
+						try {
 						int str = (int) event.getProperty().getValue();
 						for (int i = 0; i < list.size(); i++) {
 							try {
@@ -182,15 +180,19 @@ public class MyListsDesign extends MyListsSuperView{
 							}
 							
 						}
-						
 						control.receiveData((int) event.getProperty().getValue()); 
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+						
+						
 						
 						
 					}
 					
 				});
 				
-				tags.removeContainerFilter(filter);
+				((HackwesternUI) UI.getCurrent()).tags.removeContainerFilter(filter);
 				separateTableHolder.addComponent(new Label());
 			}
 			
@@ -200,12 +202,10 @@ public class MyListsDesign extends MyListsSuperView{
 	}
 	
 	public void receiveNewItem (Items item, List <Tags> tag) {
-		items.addEntity(item);
+		((HackwesternUI) UI.getCurrent()).items.addEntity(item);
 		for (int i = 0; i < tag.size(); i++) {
-			tags.addEntity(tag.get(i));
+			((HackwesternUI) UI.getCurrent()).tags.addEntity(tag.get(i));
 		}
-		
-		
 	}
 
 	
