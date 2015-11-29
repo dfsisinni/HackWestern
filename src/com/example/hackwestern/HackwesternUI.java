@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
+import com.hackwestern.lists.multiForm;
+import com.hackwestern.lists.multiFormControl;
 import com.hackwestern.persistence.Users;
 import com.hackwestern.search.SearchItemDesign;
 import com.vaadin.annotations.Theme;
@@ -39,11 +41,7 @@ public class HackwesternUI extends UI {
 		
 		if (currentUser.isAuthenticated() || currentUser.isRemembered()) {
 		} 
-
-			setContent(new LoginFormDesign());
-
-		
-
+			setContent(new multiFormControl(null, null));
 	}
 	
 	public void SecondarySearch (List <Place> places) {

@@ -89,7 +89,7 @@ public class SearchMenu extends MainSearchMenu{
         itemRequest.setKeywords(tf.getValue());
         itemRequest.getResponseGroup().add("Large");
         itemRequest.getResponseGroup().add("Images");
-        itemRequest.setCondition("2011-08-01");
+        itemRequest.setCondition("2013-08-01");
         com.ECS.client.jax.ItemSearch ItemElement = new com.ECS.client.jax.ItemSearch();
         ItemElement.setAWSAccessKeyId(awsKey);
         ItemElement.setAssociateTag("lio03-20");

@@ -36,20 +36,13 @@ public class MyListsDesign extends MyListsSuperView{
 			@Override
 			public void valueChange(ValueChangeEvent event) {
 				if(dropmenu.getValue().equals("Single List")){
-					System.out.println("works");
 					Object id = slTable.addItem();
 					Item item = slTable.getItem(id);
 					Property p_field = (Property) item.getItemProperty("Name");
 					p_field.setValue(new Label("test"));
-					//right.addComponent(pictureButton);
-					//right.setVisible(true);
-					//slTable.setPageLength(slTable.getItemIds().size() + 1);
 					final Button window = new Button("Window");
 					window.setWidth(400.0f,Unit.PIXELS);
 					right.addComponent(window);
-				}
-				else{
-					System.out.println("error"); //debug
 				}
 				}
 			});
